@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transaction-deployment
+spec:
+  replicas: 1 # 根据需要调整副本数量
+  selector:
+    matchLabels:
+      app: transaction
+  template:
+    metadata:
+      labels:
+        app: transaction
+    spec:
+      containers:
+        - name: transaction-container
+          image: ${docker-image}
+          ports:
+            - containerPort: 8080
